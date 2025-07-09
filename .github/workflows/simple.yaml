@@ -1,10 +1,14 @@
+# Name of the workflow
 name: Shell Commands
-
+# The trigger/s
 on: [push]
 
+# The action taken
 jobs:
   run-shell-command:
+    # Determine the OS
     runs-on: ubuntu-latest
+    # The action taken when the workflow is runned
     steps:
       - name: echo a string
         run: echo "Hello World"
@@ -12,3 +16,9 @@ jobs:
         run: |
           node -v
           npm -v
+      - name: python command
+        run: |
+          import platform
+          print(platform.processor())
+        # Selecting a special shell to use for the command
+        shell: python
